@@ -1,0 +1,167 @@
+/* ... existing styles ... */
+
+/* Tools Grid */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.tool-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    transition: var(--transition);
+}
+
+.tool-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+}
+
+.tool-card h3 {
+    margin-bottom: 15px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    transition: var(--transition);
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.unit {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    pointer-events: none;
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.result-item:last-child {
+    margin-bottom: 0;
+}
+
+.result-value {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+button.calc-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+button.calc-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Print Styles */
+@media print {
+    header, footer, .hero-btn, .theme-toggle, .menu-toggle {
+        display: none !important;
+    }
+
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+
+    main {
+        margin-top: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    .checklist-section {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        box-shadow: none;
+        margin-bottom: 20px;
+        page-break-inside: avoid;
+    }
+
+    .checklist-item input[type="checkbox"] {
+        border-color: #000;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Force background for checked items if browser supports */
+    .checklist-item input[type="checkbox"]:checked {
+        background-color: #000 !important;
+        border-color: #000 !important;
+    }
+    
+    .checklist-item input:checked + span {
+        color: #000;
+        text-decoration: none; /* easier to read printed */
+        font-weight: bold;
+    }
+
+    h1, h2 {
+        color: #000 !important;
+    }
+}

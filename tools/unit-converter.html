@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florian's Tools & Tips</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Tools - Unit Converter</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/tools.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         (function() {
@@ -23,35 +24,41 @@
 <body>
     <header>
         <div class="brand">IncredibleRacoon</div>
-        
         <div class="nav-container">
             <nav class="nav-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="checklists.html">Checklists</a>
-                <a href="tools.html">Tools</a>
-                <a href="resources.html">Resources</a>
+                <a href="../index.html">Home</a>
+                <a href="../checklists.html">Checklists</a>
+                <a href="../tools.html" class="active">Tools</a>
+                <a href="../resources.html">Resources</a>
             </nav>
-            
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-                <!-- Sun Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-sun" style="display: var(--icon-sun-display, block);">
-                    <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                 </svg>
             </button>
-            
             <button class="menu-toggle" aria-label="Menu">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
     </header>
 
-    <main class="hero">
-        <h1 style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Hardware Design Hub</h1>
-        <p>Expert tools, checklists, and resources for professional electronics development.</p>
+    <main>
+        <h1>Unit Converter</h1>
+        <p>Instant conversion between Mils and Millimeters.</p>
         
-        <div style="display: flex; gap: 15px; margin-top: 2rem; flex-wrap: wrap; justify-content: center;">
-            <a href="checklists.html" class="hero-btn" style="text-decoration: none;">Browse Checklists</a>
-            <a href="tools.html" class="hero-btn" style="text-decoration: none; background-color: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border);">Open Tools</a>
+        <div class="tools-grid" style="grid-template-columns: 1fr; max-width: 600px; margin: 0 auto;">
+            <div class="tool-card" id="tool-conv">
+                <h3>Mil ↔ mm</h3>
+                <div class="input-group">
+                    <label>Mils (thou)</label>
+                    <input type="number" id="conv-mil" placeholder="mil">
+                </div>
+                <div class="input-group">
+                    <label>Millimeters (mm)</label>
+                    <input type="number" id="conv-mm" placeholder="mm">
+                </div>
+            </div>
         </div>
     </main>
 
@@ -59,6 +66,7 @@
         <p>&copy; 2026 IncredibleRacoon. All rights reserved.</p>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/tools.js"></script>
 </body>
 </html>

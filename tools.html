@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools - Florian's Tools</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('theme') || 'system';
+            if (saved === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else if (saved === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+            }
+        })();
+    </script>
+    <style>
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .tool-link-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 150px;
+        }
+        .tool-link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+        .tool-link-card h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .tool-link-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .open-tool {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">IncredibleRacoon</div>
+        
+        <div class="nav-container">
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="checklists.html">Checklists</a>
+                <a href="tools.html" class="active">Tools</a>
+                <a href="resources.html">Resources</a>
+            </nav>
+            
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+            </button>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <h1>Hardware Tools</h1>
+        <p>Interactive calculators for electronics and PCB design.</p>
+        
+        <div class="tools-grid">
+
+            <a href="tools/battery-life.html" class="tool-link-card">
+                <div>
+                    <h3>Battery Life Calculator</h3>
+                    <p>Estimate the runtime of your IoT device based on capacity and consumption.</p>
+                </div>
+                <div class="open-tool">Open Calculator →</div>
+            </a>
+
+            <a href="tools/impedance.html" class="tool-link-card">
+                <div>
+                    <h3>Impedance Calculator</h3>
+                    <p>Calculate Z0 for Single-Ended Microstrip traces (IPC-2141).</p>
+                </div>
+                <div class="open-tool">Open Calculator →</div>
+            </a>
+
+            <a href="tools/trace-width.html" class="tool-link-card">
+                <div>
+                    <h3>Trace Width Calculator</h3>
+                    <p>Calculate PCB trace width for desired current capacity and temperature rise (IPC-2221).</p>
+                </div>
+                <div class="open-tool">Open Calculator →</div>
+            </a>
+
+            <a href="tools/voltage-divider.html" class="tool-link-card">
+                <div>
+                    <h3>Voltage Divider</h3>
+                    <p>Compute Vout or resistor values for standard resistive dividers.</p>
+                </div>
+                <div class="open-tool">Open Calculator →</div>
+            </a>
+
+            <a href="tools/led-resistor.html" class="tool-link-card">
+                <div>
+                    <h3>LED Resistor</h3>
+                    <p>Determine the correct series resistor for driving LEDs safely.</p>
+                </div>
+                <div class="open-tool">Open Calculator →</div>
+            </a>
+
+            <a href="tools/ohms-law.html" class="tool-link-card">
+                <div>
+                    <h3>Ohm's Law</h3>
+                    <p>Quickly solve for Voltage, Current, Resistance, and Power.</p>
+                </div>
+                <div class="open-tool">Open Calculator →</div>
+            </a>
+
+            <a href="tools/reactance.html" class="tool-link-card">
+                <div>
+                    <h3>Reactance (XC / XL)</h3>
+                    <p>Calculate capacitive and inductive reactance at a given frequency.</p>
+                </div>
+                <div class="open-tool">Open Calculator →</div>
+            </a>
+
+            <a href="tools/unit-converter.html" class="tool-link-card">
+                <div>
+                    <h3>Unit Converter</h3>
+                    <p>Convert between Mils (thou) and Millimeters instantly.</p>
+                </div>
+                <div class="open-tool">Open Converter →</div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 IncredibleRacoon. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

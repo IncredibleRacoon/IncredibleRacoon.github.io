@@ -1,0 +1,385 @@
+:root {
+    /* Color Palette - Light Mode (Default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --accent: #3b82f6; /* Modern Blue */
+    --accent-hover: #2563eb;
+    --border: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    --nav-border: rgba(229, 231, 235, 0.5);
+    
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    /* Color Palette - Dark Mode (Pitch Black / OLED friendly) */
+    --bg-primary: #000000;
+    --bg-secondary: #121212;
+    --bg-card: #121212;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --accent: #3b82f6;
+    --accent-hover: #60a5fa;
+    --border: #27272a;
+    --shadow-sm: 0 1px 2px 0 rgba(255, 255, 255, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(255, 255, 255, 0.05);
+    --nav-bg: rgba(0, 0, 0, 0.8);
+    --nav-border: rgba(39, 39, 42, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--nav-border);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--accent), #8b5cf6); /* Gradient Text */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent);
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--text-primary);
+}
+
+.menu-toggle svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-primary);
+        border-bottom: 1px solid var(--border);
+        padding: 20px;
+        gap: 20px;
+        box-shadow: var(--shadow-md);
+    }
+
+    .nav-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease-out;
+    }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    margin-top: 70px;
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* Typography */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(80vh - 70px);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-top: 1rem;
+}
+
+.hero-btn {
+    margin-top: 2rem;
+    padding: 12px 32px;
+    background-color: var(--accent);
+    color: white;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+    transition: var(--transition);
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.23);
+    background-color: var(--accent-hover);
+    color: white;
+}
+
+/* Checklist Styles */
+.checklist-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.checklist-section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.checklist-section:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+}
+
+.checklist-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--bg-secondary);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius-md);
+    transition: background-color 0.2s;
+}
+
+.checklist-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+/* Custom Checkbox */
+.checklist-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 4px;
+    margin-right: 14px;
+    margin-top: 2px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.checklist-item input[type="checkbox"]:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.checklist-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checklist-item span {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    line-height: 1.5;
+}
+
+.checklist-item input:checked + span {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-top: auto;
+    background-color: var(--bg-primary);
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .checklist-container {
+        grid-template-columns: 1fr;
+    }
+}
